@@ -16,14 +16,14 @@
             {!! Form::date('al', null, ['class' => 'form-control']) !!}
         </div>
 
-        @unlessrole('Médico')
+        <!-- @unlessrole('Médico')
             <div class="form-group col-sm-4">
                 {!! Form::label('del', 'Medico:') !!}
                 <multiselect v-model="user" :options="users" label="name" placeholder="Seleccione uno...">
                 </multiselect>
                 <input type="hidden" name="users" :value="user ? user.id : null">
             </div>
-        @endunlessrole
+        @endunlessrole -->
 
         <div class="form-group col-sm-4">
             {!! Form::label('estado', 'Estado:') !!}
@@ -59,44 +59,3 @@
     </div>
 </form>
 
-
-@push('scripts')
-
-    <script >
-
-        $(function () {
-            $('#formFiltersDatatables').submit(function(e){
-
-                e.preventDefault();
-                table = window.LaravelDataTables["dataTableBuilder"];
-
-                table.draw();
-            });
-        })
-
-        new Vue({
-            el: '#formFiltersDatatables',
-            name: 'fromFiltersSolicitudes',
-            created() {
-
-            },
-            data: {
-                estados : @json($estados ?? []),
-                estado: null,
-                servicios : @json($servicios ?? []),
-                servicio: null,
-
-                users : @json(\App\Models\User::role([\App\Models\Role::MEDICO,\App\Models\Role::INFECTOLOGO])->get() ?? []),
-                user: null,
-
-
-            },
-            methods: {
-
-            },
-            computed:{
-
-            }
-        });
-    </script>
-@endpush
