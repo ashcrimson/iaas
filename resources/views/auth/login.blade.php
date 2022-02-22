@@ -6,7 +6,7 @@
 
     <div class="login-box">
         <div class="login-logo text-dark text-uppercase text-bold"  >
-            <a href="{{ route('home') }}"><b style="color: black !important;">{{ config('app.name', 'Laravel') }}</b></a>
+            <a href="{{ route('home') }}"><b style="color: black !important;">Iaas</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
@@ -103,10 +103,10 @@
                 </form>
 
 
-                @include('partials.social_links')
 
 
-                <p class="mb-1">
+
+               <!--  <p class="mb-1">
                     @if (Route::has('password.request'))
                         <a class="text-center" href="{{ route('password.request') }}">
                             {{ __('Forgot Your Password?') }}
@@ -117,7 +117,7 @@
                     <a href="{{route("register")}}" class="text-center">
                         {{__("Register a new membership")}}
                     </a>
-                </p>
+                </p> -->
             </div>
             <!-- /.login-card-body -->
         </div>

@@ -49,6 +49,13 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('projects', 'ProjectController');
 
+    Route::resource('solicitudes', 'SolicitudController')->except(['show'])->parameters([
+        'solicitudes' => 'solicitud'
+    ]);
+
+    Route::resource('pacientes', 'PacienteController');
+    Route::get('get/data/paciente', 'PacienteController@getPacientePorApi')->name('get.datos.paciente');
+
 });
 
 
