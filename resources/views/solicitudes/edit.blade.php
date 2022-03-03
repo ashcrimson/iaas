@@ -63,12 +63,12 @@
                                     Cancelar
                                 </a>
                                 &nbsp;
-                                @if($solicitud->estado_id!=\App\Models\SolicitudEstado::PARA_REGRESAR)
-                                    <!-- <button type="submit" class="btn btn-outline-success mr-3"
-                                            :disabled="desabilitar_botones_guardar">
+                              
+                                    <button type="submit" class="btn btn-outline-success mr-3"
+                                            >
                                         <i class="fa fa-save"></i> Guardar
-                                    </button> -->
-                                @endif
+                                    </button>
+                              
 
                             </div>
 
@@ -77,7 +77,7 @@
                                 <div class="form-group col-sm-4 text-right ">
 
                                     <div class="input-group mb-3">
-                                        {{--                                        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">--}}
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-outline-primary mr-3" name="regresar" value="1"
                                                     :disabled="desabilitar_botones_guardar">
