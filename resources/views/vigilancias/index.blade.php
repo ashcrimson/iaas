@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title_page',__('Solicitudes'))
+@section('title_page',__('Vigilancias'))
 
 @section('content')
 
@@ -29,21 +29,21 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Solicitudes</h1>
+                    <h1>Vigilancias</h1>
                 </div>
-                @can('Crear Solicitudes')
+               
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-right">
                         <li class="breadcrumb-item">
                             <a class="btn btn-outline-success"
-                               href="{!! route('solicitudes.create') !!}">
+                               href="{!! route('vigilancias.create') !!}">
                                 <i class="fa fa-plus"></i>
                                 <span class="d-none d-sm-inline">Nueva</span>
                             </a>
                         </li>
                     </ol>
                 </div>
-                @endcan
+
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -65,7 +65,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    @include('solicitudes.form_filters')
+                    @include('vigilancias.form_filters')
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -74,7 +74,7 @@
             <div class="clearfix"></div>
             <div class="card card-primary">
                 <div class="card-body">
-                    @include('solicitudes.table')
+                    @include('vigilancias.table')
                 </div>
             </div>
             <div class="text-center">

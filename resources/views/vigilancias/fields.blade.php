@@ -24,12 +24,10 @@
 
 
 
-
-
 <div class="col-sm-12 mb-3">
     <div class="card card-outline card-info ">
         <div class="card-header">
-            <h3 class="card-title">Datos Registro</h3>
+            <h3 class="card-title">Factores de Riesgo</h3>
 
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
@@ -45,24 +43,19 @@
                 <div class="form-group col-4">
                     <div class="card ">
                         <div class="card-header py-0 px-1">
-                            <h3 class="card-title">Tratamiento</h3>
+                            <h3 class="card-title">Factores de Riesgo</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-2">
                             <!-- radio -->
                             <div class="form-group mb-0">
                                 <div class="custom-control custom-radio">
-                                    <input type="hidden" name="inicio" value="0">
-                                  <input class="custom-control-input" type="radio" id="inicio" name="tratamiento" value="inicio" required
-                                      {{($solicitud->inicio ?? 0) ? 'checked' : ''}}>
-                                  <label for="inicio" class="custom-control-label">Inicio</label>
+                                    <input type="hidden" name="pesquisa" value="0">
+                                  <input class="custom-control-input" type="radio" id="pesquisa" name="pesquisa" value="inicio" required
+                                      {{($vigilancia->pesquisa ?? 0) ? 'checked' : ''}}>
+                                  <label for="pesquisa" class="custom-control-label">Pesquisa</label>
                                 </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="hidden" name="continuacion" value="0">
-                                  <input class="custom-control-input" type="radio" id="continuacion" name="tratamiento" value="continuacion"
-                                      {{($solicitud->continuacion ?? 0) ? 'checked' : ''}}>
-                                  <label for="continuacion" class="custom-control-label">Continuacion</label>
-                                </div>
+                                
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -72,22 +65,22 @@
                 <div class="form-group col-4">
                     <div class="card ">
                         <div class="card-header py-0 px-1">
-                            <h3 class="card-title">Terapia</h3>
+                            <h3 class="card-title">Dip Hospitalización</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-2">
                             <div class="form-group mb-0">
                                 <div class="custom-control custom-radio">
-                                    <input type="hidden" name="terapia_empirica" value="0">
-                                    <input class="custom-control-input" type="radio" id="terapia_empirica" name="terapia" value="terapia_empirica" required 
-                                        {{($solicitud->terapia_empirica ?? 0) ? 'checked' : ''}}>
-                                    <label for="terapia_empirica" class="custom-control-label">Terapia Empirica</label>
+                                    <input type="hidden" name="dip" value="0">
+                                    <input class="custom-control-input" type="radio" id="dip" name="dip" value="dip" required 
+                                        {{($vigilancia->dip ?? 0) ? 'checked' : ''}}>
+                                    <label for="dip" class="custom-control-label">DIP (Hospitalizados)</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="hidden" name="terapia_especifica" value="0">
-                                    <input class="custom-control-input" type="radio" id="terapia_especifica" name="terapia" value="terapia_especifica"
-                                        {{($solicitud->terapia_especifica ?? 0) ? 'checked' : ''}}>
-                                    <label for="terapia_especifica" class="custom-control-label">Terapia Especifica</label>
+                                    <input type="hidden" name="procedimientos_cirugias" value="0">
+                                    <input class="custom-control-input" type="radio" id="procedimientos_cirugias" name="procedimientos_cirugias" value="procedimientos_cirugias"
+                                        {{($vigilancia->procedimientos_cirugias ?? 0) ? 'checked' : ''}}>
+                                    <label for="procedimientos_cirugias" class="custom-control-label">Procedimientos y Cirugías</label>
                                 </div>
                             </div>
                         </div>

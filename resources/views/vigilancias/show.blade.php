@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title_page',__('Solicitudes'))
+@section('title_page',__('Vigilancias'))
 
 @section('content')
 
@@ -9,10 +9,10 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{__('Solicitudes')}}</h1>
+                    <h1>{{__('Vigilancias')}}</h1>
                 </div>
                 <div class="col-6 text-right pl-3">
-                <a href="{!! route('solicitudes.index') !!}" class="btn btn-outline-secondary mr-3">
+                <a href="{!! route('vigilancias.index') !!}" class="btn btn-outline-secondary mr-3">
                     {{__('Back')}}
                 </a>
 
@@ -27,11 +27,11 @@
         <div class="card">
             <!-- /.card-header -->
             <div class="card-body">
-                @include('solicitudes.show_fields')
+                @include('vigilancias.show_fields')
 
                 <br>
                 <div class="row">
-                    @include('solicitudes.partials.botones')
+                    @include('vigilancias.partials.botones')
                 </div>
                 <br>
             </div>

@@ -25,12 +25,7 @@
             </div>
         @endunlessrole -->
 
-        <div class="form-group col-sm-4">
-            {!! Form::label('estado', 'Estado:') !!}
-            <multiselect v-model="estado" :options="estados" label="nombre" placeholder="Seleccione uno...">
-            </multiselect>
-            <input type="hidden" name="estados" :value="estado ? estado.id : null">
-        </div>
+      
 
         <div class="form-group col-sm-4">
             {!! Form::label('servicio', 'Servicio:') !!}
