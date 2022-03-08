@@ -160,7 +160,7 @@ class VigilanciaController extends AppBaseController
             $vigilancia = $this->addAttributos($vigilancia);
         }
 
-        if (empty($vigilancia) {
+        if (empty($vigilancia)) {
             flash()->error('Vigilancia no encontrada');
 
             return redirect(route('vigilancias.index'));
@@ -297,22 +297,6 @@ class VigilanciaController extends AppBaseController
     }
 
 
-    public function getVigilanciaTemporal()
-    {
-        $sol = Vigilancia::where('user_crea',auth()->user()->id)->where('estado_id',SolicitudEstado::TEMPORAL)->first();
-
-        if ($sol){
-            $sol->delete();
-        }
-
-        $sol = Vigilancia::create([
-            'user_crea' => auth()->user()->id,
-            'estado_id' => SolicitudEstado::TEMPORAL,
-        ]);
-
-
-        return $sol;
-    }
 
     public function addAttributos(Vigilancia $vigilancia)
     {

@@ -49,8 +49,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('projects', 'ProjectController');
 
-    Route::resource('solicitudes', 'SolicitudController')->except(['show'])->parameters([
-        'solicitudes' => 'solicitud'
+    Route::resource('vigilancias', 'VigilanciaController')->except(['show'])->parameters([
+        'vigilancias' => 'vigilancia'
     ]);
 
     Route::resource('pacientes', 'PacienteController');
@@ -59,3 +59,6 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 
+
+
+Route::resource('vigilantias', 'VigilantiaController');

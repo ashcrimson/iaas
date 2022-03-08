@@ -82,35 +82,17 @@
                                         {{($vigilancia->procedimientos_cirugias ?? 0) ? 'checked' : ''}}>
                                     <label for="procedimientos_cirugias" class="custom-control-label">Procedimientos y Cirugías</label>
                                 </div>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                </div>
-
-                <div class="form-group col-4">
-                    <div class="card ">
-                        <div class="card-header py-0 px-1">
-                            <h3 class="card-title">Fuente de infección</h3>
-
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body p-2">
-
-                            <div class="form-group mb-0">
                                 <div class="custom-control custom-radio">
-                                    <input type="hidden" name="infeccion_extrahospitalaria" value="0">
-                                    <input class="custom-control-input" type="radio" id="infeccion_extrahospitalaria" name="fuente_infeccion" value="infeccion_extrahospitalaria" required 
-                                        {{($solicitud->infeccion_extrahospitalaria ?? 0) ? 'checked' : ''}}>
-                                    <label for="infeccion_extrahospitalaria" class="custom-control-label">Infección Extrahospitalaria</label>
-
+                                    <input type="hidden" name="iarepi" value="0">
+                                    <input class="custom-control-input" type="radio" id="iarepi" name="iarepi" value="iarepi"
+                                        {{($vigilancia->iarepi ?? 0) ? 'checked' : ''}}>
+                                    <label for="iarepi" class="custom-control-label">IAREPI</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="hidden" name="infeccion_intrahospitalaria" value="0">
-                                    <input class="custom-control-input" type="radio" id="infeccion_intrahospitalaria" name="fuente_infeccion" value="infeccion_intrahospitalaria"
-                                        {{($solicitud->infeccion_intrahospitalaria ?? 0) ? 'checked' : ''}}>
-                                    <label for="infeccion_intrahospitalaria" class="custom-control-label">Infeccion Intrahospitalaria</label>
-
+                                    <input type="hidden" name="paa" value="0">
+                                    <input class="custom-control-input" type="radio" id="paa" name="paa" value="paa"
+                                        {{($vigilancia->paa ?? 0) ? 'checked' : ''}}>
+                                    <label for="paa" class="custom-control-label">PAA</label>
                                 </div>
                             </div>
                         </div>
@@ -119,19 +101,10 @@
                 </div>
 
 
-                   
-                </div>
-
-               
-
-                <div class="form-group col-12">
-                    @include('solicitudes.panel_disfuncion')
-                </div>
-
-                <!-- Observaciones Field -->
+                <!-- Comentarios Field -->
                 <div class="form-group col-sm-12 col-lg-12">
-                    {!! Form::label('observaciones', 'Observaciones:') !!}
-                    {!! Form::textarea('observaciones', null, ['class' => 'form-control','rows' => 3]) !!}
+                    {!! Form::label('comentarios', 'Comentarios:') !!}
+                    <p>{{$vigilancia->comentarios}}</p>
                 </div>
 
 

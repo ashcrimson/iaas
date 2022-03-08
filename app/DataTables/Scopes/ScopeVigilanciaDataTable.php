@@ -2,11 +2,11 @@
 
 namespace App\DataTables\Scopes;
 
-use App\Models\SolicitudEstado;
+use App\Models\VigilanciaEstado;
 use Carbon\Carbon;
 use Yajra\DataTables\Contracts\DataTableScope;
 
-class ScopeSolicitudDataTable implements DataTableScope
+class ScopeVigilanciaDataTable implements DataTableScope
 {
 
 

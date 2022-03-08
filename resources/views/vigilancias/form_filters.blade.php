@@ -46,7 +46,7 @@
         <div class="form-group col-sm-2">
             {!! Form::label('boton','&nbsp;') !!}
             <div>
-                <a  href="{{route('solicitudes.index')}}" type="submit" id="boton" class="btn btn-info btn-block">
+                <a  href="{{route('vigilancias.index')}}" type="submit" id="boton" class="btn btn-info btn-block">
                     <i class="fa fa-times"></i> Limpiar Filtros
                 </a>
             </div>

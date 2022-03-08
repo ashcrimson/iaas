@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title_page',__('Edit Solicitud'))
+@section('title_page',__('Edit Vigilencia'))
 
 @section('content')
 
@@ -9,11 +9,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col">
-                    <h1>{{ $solicitud->esTemporal() ? "Nueva" : "Editar"  }} Solicitud</h1>
+                    <h1>{{ $vigilancia->esTemporal() ? "Nueva" : "Editar"  }} Vigilancia</h1>
                 </div>
                 <div class="col">
                     <a class="btn btn-outline-info float-right"
-                       href="{{route('solicitudes.index')}}">
+                       href="{{route('vigilancias.index')}}">
                         <i class="fa fa-list" aria-hidden="true"></i>&nbsp;<span class="d-none d-sm-inline">{{__('List')}}</span>
                     </a>
                 </div>
@@ -30,36 +30,22 @@
             <div class="card">
                 <div class="card-body">
 
-                   {!! Form::model($solicitud, ['route' => ['solicitudes.update', $solicitud->id], 'method' => 'patch','id' => 'form-solicitud']) !!}
+                   {!! Form::model($vigilancia, ['route' => ['vigilancias.update', $vigilancia->id], 'method' => 'patch','id' => 'form-solicitud']) !!}
                         <div class="form-row">
 
 
-                            @include('solicitudes.fields')
+                            @include('vigilancias.fields')
 
 
                         </div>
 
-                        <div class="form-row" id="botonesGuardarSolicitud">
+                        <div class="form-row" id="botonesGuardarVigilancia">
 
-                            <div class="col-4 text-left pl-4 text-lg">
-                                Estado:
-                                <span class="badge badge-info">
-                                        {{$solicitud->estado->nombre}}
-                                    </span>
-
-                                @can('Cerrar Solicitud')
-                                    @if($solicitud->puedeCerrar())
-                                    <a href="{!! route('solicitudes.cerrar',$solicitud->id) !!}" class="btn btn-outline-danger ml-3">
-                                        <i class="fa fa-ban"></i> Cerrar Solicitud
-                                    </a>
-                                    @endif
-                                @endcan
-                            </div>
-
+                           
                             <!-- Submit Field -->
                             <div class="form-group col-sm-4 text-right ">
 
-                                <a href="{!! route('solicitudes.index') !!}" class="btn btn-outline-secondary mr-3">
+                                <a href="{!! route('vigilancias.index') !!}" class="btn btn-outline-secondary mr-3">
                                     Cancelar
                                 </a>
                                 &nbsp;
@@ -72,36 +58,6 @@
 
                             </div>
 
-                            @if($solicitud->puedeRegresar())
-
-                                <div class="form-group col-sm-4 text-right ">
-
-                                    <div class="input-group mb-3">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-outline-primary mr-3" name="regresar" value="1"
-                                                    :disabled="desabilitar_botones_guardar">
-                                                <i class="fa fa-paper-plane"></i> Guardar Y Corregir
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            @else
-
-                                <div class="form-group col-sm-4 text-right ">
-
-                                    <div class="input-group mb-3">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese PIN"
-                                               :disabled="desabilitar_botones_guardar">
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-outline-primary mr-3" id="btnEnviar" name="enviar" value="1"
-                                                    :disabled="desabilitar_botones_guardar">
-                                                <i class="fa fa-paper-plane"></i> Guardar Y Enviar
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
                         </div>
 
                    {!! Form::close() !!}
@@ -115,9 +71,9 @@
 @push('scripts')
 <script>
 
-    let vmBotonesGuardarSolicitud = new Vue({
-        el: '#botonesGuardarSolicitud',
-        name: 'botonesGuardarSolicitud',
+    let vmBotonesGuardarVigilancia = new Vue({
+        el: '#botonesGuardarVigilancia',
+        name: 'botonesGuardarVigilancia',
         mounted() {
             console.log('Instancia vue montada');
         },

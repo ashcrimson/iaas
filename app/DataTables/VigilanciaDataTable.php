@@ -2,13 +2,13 @@
 
 namespace App\DataTables;
 
-use App\Models\Solicitud;
+use App\Models\Vigilancia;
 use Carbon\Carbon;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class SolicitudDataTable extends DataTable
+class VigilanciaDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -20,63 +20,51 @@ class SolicitudDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-       return $dataTable->addColumn('action', function(Solicitud $solicitud){
+       return $dataTable->addColumn('action', function(Vigilancia $vigilancia){
 
-                 $id = $solicitud->id;
+                 $id = $vigilancia->id;
 
-                 return view('solicitudes.datatables_actions',compact('solicitud','id'))->render();
+                 return view('vigilancias.datatables_actions',compact('vigilancia','id'))->render();
              })
-             ->editColumn('paciente.rut_completo',function (Solicitud $solicitud){
+             ->editColumn('paciente.rut_completo',function (Vigilancia $vigilancia){
 
-                 return $solicitud->paciente->rut_completo ?? '';
+                 return $vigilancia->paciente->rut_completo ?? '';
 
              })
-           ->editColumn('antimicrobiano',function (Solicitud $solicitud){
-               return view('solicitudes.partials.datatable_columna_medicamtenso',compact('solicitud'));
-           })
-           ->editColumn('microorganismo',function (Solicitud $solicitud){
-               return view('solicitudes.partials.datatable_columna_microorganismos',compact('solicitud'));
-           })
-           ->setRowAttr([
-               'style' => function(Solicitud $solicitud){
-                   return 'background-color: '.$solicitud->getColor().';';
-               }
-           ])
-           ->editColumn('fecha_solicita',function (Solicitud $solicitud){
-               return $solicitud->fecha_solicita ? $solicitud->fecha_solicita->format('d/m/Y') : '';
+          
+           ->editColumn('pesquisa',function (Vigilancia $vigilancia){
+               return $vigilancia->pesquisa  ?? '';
            })
 
-           ->editColumn('created_at',function (Solicitud $solicitud){
-               return $solicitud->created_at ? $solicitud->created_at->format('d/m/Y') : '';
+           ->editColumn('dip',function (Vigilancia $vigilancia){
+               return $vigilancia->dip  ?? '';
            })
 
-
-           ->editColumn('fecha_fin_tratamiento',function (Solicitud $solicitud){
-               return $solicitud->fecha_fin_tratamiento ? $solicitud->fecha_fin_tratamiento->format('d/m/Y') : '';
+           ->editColumn('procedimientos_cirugias',function (Vigilancia $vigilancia){
+               return $vigilancia->procedimientos_cirugias  ?? '';
            })
-           ->editColumn('paciente.nombre_completo',function (Solicitud $solicitud){
 
-               //en esta vista van los modals para que no tenga problemas de renderizado
-               return view('solicitudes.columna_paciente',compact('solicitud'));
+           ->editColumn('iarepi',function (Vigilancia $vigilancia){
+               return $vigilancia->iarepi  ?? '';
            })
-             ->rawColumns(['microorganismo','antimicrobiano','paciente','action']);
+
+           ->editColumn('paa',function (Vigilancia $vigilancia){
+               return $vigilancia->paa  ?? '';
+           });
 
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Solicitud $model
+     * @param \App\Models\Vigilancia $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(Solicitud $model)
     {
         return $model->newQuery()
-            ->with(['paciente','estado','userCrea','medicamentos','microorganismos'])
-            ->join('solicitud_estados','solicitud_estados.id','=','solicitudes.estado_id')
-            ->select('solicitudes.*','solicitud_estados.orden')
-            ->orderBy('orden','asc')
-            ->orderBy('fecha_solicita','asc');
+            ->with(['paciente'])
+            ->select('vigilancias.*');
     }
 
     /**
@@ -131,9 +119,6 @@ class SolicitudDataTable extends DataTable
 
             
 
-            Column::make('medico')->name('userCrea.name')->data('user_crea.name'),
-
-
             Column::make('paciente.apellido_paterno')
                 ->visible(false)->exportable(false),
             Column::make('paciente.apellido_materno')
@@ -155,14 +140,6 @@ class SolicitudDataTable extends DataTable
 
             Column::make('rut')->name('paciente.run')->data('paciente.run')
                 ->visible(false),
-
-            Column::make('antimicrobiano')->searchable(false)->orderable(false),
-            Column::make('microorganismo')->searchable(false)->orderable(false),
-            Column::make('fecha_ingreso')->data('created_at')->name('created_at')->visible(false),
-            Column::make('fecha_solicitud')->data('fecha_solicita')->name('fecha_solicita'),
-
-            Column::make('fecha_fin_tratamiento')->data('fecha_fin_tratamiento')->name('fecha_fin_tratamiento'),
-            Column::make('estado')->name('estado.nombre')->data('estado.nombre'),
         ];
     }
 
@@ -173,6 +150,6 @@ class SolicitudDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'solicitudesdatatable_' . time();
+        return 'vigilanciasdatatable_' . time();
     }
 }

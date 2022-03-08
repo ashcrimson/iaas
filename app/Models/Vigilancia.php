@@ -117,6 +117,11 @@ class Vigilancia extends Model
         return $this->belongsTo(\App\Models\User::class, 'user_actualiza');
     }
 
+    public function esTemporal()
+    {
+        return $this->estado_id==VigilanciaEstado::TEMPORAL;
+    }
+
    
 
 }

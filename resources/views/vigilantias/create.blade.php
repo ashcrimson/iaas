@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title_page',__('New Vigilancia'))
+@section('title_page',__('New Vigilantia'))
 
 @section('content')
 
@@ -9,11 +9,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{__('New Solicitud')}}</h1>
+                    <h1>{{__('New Vigilantia')}}</h1>
                 </div>
                 <div class="col ">
                     <a class="btn btn-outline-info float-right"
-                       href="{{route('vigilancias.index')}}">
+                       href="{{route('vigilantias.index')}}">
                         <i class="fa fa-list" aria-hidden="true"></i>&nbsp;<span class="d-none d-sm-inline">{{__('List')}}</span>
                     </a>
                 </div>
@@ -28,14 +28,14 @@
 
             <div class="card">
                 <div class="card-body">
-                    {!! Form::open(['route' => 'vigilancias.store','class' => 'wait-on-submit']) !!}
+                    {!! Form::open(['route' => 'vigilantias.store','class' => 'wait-on-submit']) !!}
                         <div class="form-row">
 
-                            @include('vigilancias.fields')
+                            @include('vigilantias.fields')
 
                             <!-- Submit Field -->
                             <div class="form-group col-sm-12 text-right">
-                                <a href="{!! route('vigilancias.index') !!}" class="btn btn-outline-secondary">
+                                <a href="{!! route('vigilantias.index') !!}" class="btn btn-outline-secondary">
                                     Cancelar
                                 </a>
                                 &nbsp;
